@@ -6,11 +6,12 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Card, CardContent, Container, Divider, FormControl, MenuItem, Select, TextField } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const steps = ['Items', 'Select Address', 'Confirm Order'];
 
 export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = React.useState(1);
   const [skipped, setSkipped] = React.useState(new Set());
 
   const isStepOptional = (step) => {
@@ -56,7 +57,7 @@ export default function Checkout() {
     setActiveStep(0);
   };  
   
-  const [age, setAge] = useState('Select');
+  const [age, setAge] = useState(1);
   const handleSort = (event) => {
     setAge(event.target.value);
   };
@@ -238,9 +239,15 @@ export default function Checkout() {
               //   Skip
               // </Button>
             )}
+            {activeStep === steps.length - 1  ?
+            <Button component={Link} to='/listing' onClick={handleNext} variant='contained'>
+              Place Order
+            </Button> :
+
             <Button onClick={handleNext} variant='contained'>
-              {activeStep === steps.length - 1 ? 'Place Order' : 'Next'}
+              Next
             </Button>
+            }
           </Box>
         </>
       )}

@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { Alert, Box, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, Grid, IconButton, InputLabel, MenuItem, Select, Snackbar, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const products = [
     { name:'Product Name', price: '$1000', thumb:'https://static.digit.in/default/apple-iphone-14-pro-max-2385bb85d3.jpeg', desc: 'izards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica'},
@@ -133,6 +134,7 @@ export default function Listing() {
     {products.map((e) => (
         <Grid item xs={4}>
             <Card>
+                
                 <CardMedia
                 component="img"
                 alt="green iguana"
@@ -154,7 +156,7 @@ export default function Listing() {
                 </Typography>
 
                 <Box sx={{justifyContent:'space-between', mt:4, display:'flex'}}>
-                    <Button variant="contained" size="small">Buy</Button>
+                    <Button component={Link} to='/product' variant="contained" size="small">Buy</Button>
                     <Box sx={{mx:-0.5}}>
                         <IconButton aria-label="delete" size="medium" edge="start" sx={{mx:0.5}}>
                             <EditIcon fontSize="small" />
